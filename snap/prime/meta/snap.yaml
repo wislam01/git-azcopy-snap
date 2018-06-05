@@ -1,0 +1,15 @@
+name: git-azcopy-snap
+version: '1.00'
+summary: This is snap that makes available git and AZCopy
+description: |
+  snap for Ubuntu Core 16.04 that will allow usage of the following utilities   git
+  AZCopy
+architectures:
+- amd64
+confinement: devmode
+grade: devel
+apps:
+  azcopy:
+    command: command-azcopy.wrapper
+  git:
+    command: command-git.wrapper
