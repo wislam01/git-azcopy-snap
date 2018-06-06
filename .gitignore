@@ -2,3 +2,6 @@ snap/parts/
 snap/stage/
 snap/prime/
 snap/*.snap
+
+snap/.snapcraft
+snap/snap/.snapcraft
