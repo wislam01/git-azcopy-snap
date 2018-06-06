@@ -16,13 +16,11 @@ apps:
 parts:
   ms-azcopy:
     source: https://aka.ms/downloadazcopylinux64
-#    plugin: autotools
     plugin: dump
     source-type: tar
-#    prepare: sudo ./install.sh
-#  git:
-#    source: 
-    override-build: sudo ./install.sh
+    override-build: |
+      snapcraftctl build      
+      sudo sed -i 's|/usr/bin|$SNAP/usr/bin|g' $SNAPCRAFT_PART_INSTALL/install.sh
   scm-git:
     source: https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.7.4.tar.gz
     plugin: autotools
