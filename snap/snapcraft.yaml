@@ -20,7 +20,8 @@ parts:
     source: https://aka.ms/downloadazcopylinux64
     plugin: dump
     source-type: tar
-#    override-build: |
+    override-build: |
+      sudo ./install.sh
 #      snapcraftctl build      
 #      sudo sed -i 's|/usr/bin|$SNAP/usr/bin|g' $SNAPCRAFT_PART_INSTALL/install.sh
   scm-git:
@@ -29,6 +30,15 @@ parts:
     plugin: autotools
     source-type: git
     source-tag: v2.17.1
-#    build-packages: [dh-autoreconf, libcurl4-gnutls-dev, libexpat1-dev,
-#gettext, libz-dev, libssl-dev, asciidoc, xmlto, docbook2x]
+    source-depth: 1
+    build-packages: 
+      - dh-autoreconf
+      - libcurl4-gnutls-dev
+      - libexpat1-dev
+      - gettext
+      - libz-dev
+      - libssl-dev
+      - asciidoc
+      - xmlto
+      - docbook2x
 #    configflags: ["--prefix=/usr"]
