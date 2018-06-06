@@ -9,9 +9,9 @@ confinement: devmode
 
 apps:
   azcopy:
-    command: azcopy
+    command: /usr/bin/azcopy
   git:
-    command: bin/git
+    command: /usr/bin/git
     plugs:
       - network
 
@@ -20,8 +20,9 @@ parts:
     source: https://aka.ms/downloadazcopylinux64
     plugin: dump
     source-type: tar
-    override-build: |
-      sudo ./install.sh
+    override-stage: |
+      snapcraftctl stage
+      sudo sed -i 's|/usr/bin|$SNAP/usr/bin|g' install.sh
 #      snapcraftctl build      
 #      sudo sed -i 's|/usr/bin|$SNAP/usr/bin|g' $SNAPCRAFT_PART_INSTALL/install.sh
   scm-git:
